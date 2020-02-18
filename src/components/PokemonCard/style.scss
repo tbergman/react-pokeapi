@@ -20,6 +20,33 @@
   box-sizing: border-box;
   transform: perspective(10em);
 
+  &__background {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 200%;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: -1;
+    opacity: 0.8;
+    filter: blur(5px);
+    box-shadow: inset 0 0 0 10em rgba(255, 255, 255, 0.7);
+
+    &::before {
+      display: block;
+      content: "";
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      z-index: -1;
+      background: radial-gradient(
+        closest-side,
+        rgba(255, 255, 255, 0.8) 40%,
+        rgba(255, 255, 255, 0) 65%
+      );
+    }
+  }
+
   &:hover {
     --border-color: #84318f;
     box-shadow: 6px 6px 12px 0 rgba(0, 0, 0, 0.3);
@@ -46,14 +73,19 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
   }
 
   &__image {
-    flex: 2 1 auto;
+    flex: 2 1 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-content: center;
+    margin-top: 2em;
   }
 
   &__types {
